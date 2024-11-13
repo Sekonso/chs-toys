@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/catalog.css" />
+    <link rel="stylesheet" href="./styles/cart.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/4d69af1ea6.js" crossorigin="anonymous" defer></script>
+    <script type="module" src="./main.js" defer></script>
+
+    <title>CHS TOYS</title>
+  </head>
+  <body>
+    <!-- Catalog layout -->
+    <section class="home-layout">
+      <header class="hero">
+        <h1 class="hero-brand">CHS TOYS</h1>
+        <img src="./assets/hero-img.jpg" alt="Gambar mobil" class="hero-img" />
+      </header>
+
+      <main>
+        <div class="catalog">
+          <!-- FILTER -->
+          <div class="filter">
+            <!-- Brand categories list -->
+            <div class="brand-list"></div>
+
+            <!-- Seach bar -->
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="search" class="search-input" />
+            </div>
+          </div>
+
+          <!-- CAR LIST -->
+          <div class="car-list"></div>
+
+          <!-- CART -->
+          <div class="cart-button-container">
+            <button class="cart-button"><i class="fas fa-cart-shopping"></i></button>
+            <div class="cart-button-amount">0</div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- Cart layout -->
+    <section class="cart-layout hidden">
+      <div class="cart-header">
+        <div></div>
+        <h1 class="cart-header">Keranjang</h1>
+        <button class="cart-exit"><i class="fas fa-x"></i></button>
+      </div>
+
+      <form class="cart-form">
+        <div class="cart-item-list">
+        </div>
+        <button type="submit" class="cart-submit">Beli</button>
+      </form>
+    </section>
+  </body>
+</html>

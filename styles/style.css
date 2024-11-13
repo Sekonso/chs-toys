@@ -1,0 +1,64 @@
+:root {
+  --dark-grey: #353434;
+  --light-grey: #999999;
+  --light-blue: #3590c5;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--dark-grey);
+  color: white;
+  padding: 2rem;
+}
+
+button {
+  background: white;
+  color: black;
+  border: none;
+  outline: none;
+}
+button:hover {
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* Utilities */
+.hidden {
+  display: none;
+}
+
+/* HERO */
+
+.hero {
+  font-family: "Bakbak One", sans-serif;
+  text-align: center;
+}
+
+.hero-brand {
+  margin-bottom: 2rem;
+}
+
+.hero-img {
+  width: 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 99;
+}

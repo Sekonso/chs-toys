@@ -1,0 +1,157 @@
+.cart-layout {
+  max-width: 720px;
+  margin: auto;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.cart-header h1 {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+
+.cart-exit {
+  width: 35px;
+  height: 35px;
+}
+
+.cart-empty {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.cart-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.cart-item-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 2rem 0;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.cart-item-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.cart-item-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cart-item-info-lower {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cart-item-info-lower > * {
+  width: 100px;
+}
+
+.cart-item-amount {
+  padding: 0 1rem;
+  height: 100%;
+}
+
+.cart-item-delete {
+  background: rgb(209, 10, 10);
+  color: white;
+  padding: 0.7rem 0;
+}
+
+.cart-submit,
+.buy-submit {
+  background: var(--light-blue);
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  height: 50px;
+}
+.cart-submit:hover,
+.cart-submit:hover {
+  background: white;
+  color: var(--light-blue);
+}
+
+.buy-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 540px;
+}
+
+.buy-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.buy-form-header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: white;
+  width: 35px;
+  height: 35px;
+}
+
+.buy-form label {
+  margin-bottom: 0.5rem;
+}
+
+.buy-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.buy-submit {
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 720px) {
+  .cart-item-img {
+    max-width: 300px;
+    object-fit: cover;
+  }
+
+  .cart-item {
+    flex-wrap: nowrap;
+  }
+}

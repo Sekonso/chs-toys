@@ -1,0 +1,259 @@
+.catalog {
+  margin: 1.5rem 0;
+}
+
+/* FILTER */
+
+.filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.filter > * {
+  width: 100vw;
+}
+
+.brand-list {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.brand-list::-webkit-scrollbar {
+  display: none;
+}
+
+.brand-item {
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #353434, #999999);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+  padding: 1rem;
+}
+.brand-item:hover {
+  cursor: pointer;
+}
+.brand-item input[type="checkbox"]:checked + .brand-image {
+  filter: grayscale(0%);
+}
+
+.brand-image {
+  width: 50%;
+  filter: grayscale(100%);
+}
+
+.brand-checkbox {
+  display: none;
+}
+
+.search-bar {
+  background: var(--light-grey);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 50px;
+  padding: 1rem;
+}
+
+.search-input {
+  color: white;
+  opacity: 0.8;
+  background: inherit;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+/* CAR LIST */
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  margin: 2rem 0;
+}
+
+.car-list-error {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.car-item {
+  max-width: 450px;
+}
+
+.car-image {
+  width: 100%;
+  height: 200px;
+}
+
+.car-upper {
+  margin-top: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+.car-name {
+  margin-bottom: 0.3rem;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.car-model {
+  opacity: 0.5;
+}
+
+.car-lower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.car-price {
+  font-size: 1.2rem;
+}
+
+.car-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.car-actions button {
+  background: white;
+  padding: 0.5rem 2rem;
+  border: none;
+}
+
+.car-actions button:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
+}
+
+/* CAR DETAIL */
+.car-detail {
+  background: var(--dark-grey);
+  display: flex;
+  flex-direction: column;
+  max-width: 680px;
+  padding: 2rem;
+}
+
+.car-detail-exit {
+  align-self: flex-end;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.car-detail-image {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+}
+
+.car-detail-name {
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.car-detail-model {
+  opacity: 0.7;
+}
+
+.car-detail-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.car-detail-specs .spec {
+  background: black;
+  padding: 0.3rem 0.5rem;
+}
+
+.car-detail-desc {
+  max-height: 4rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.car-detail-desc::-webkit-scrollbar {
+  display: none;
+}
+
+.car-detail-lower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.car-detail-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.car-detail-add {
+  padding: 0.5rem 1.5rem;
+}
+
+button.added {
+  background: var(--light-blue);
+  color: white;
+}
+button.added:hover {
+  background: white;
+  color: var(--light-blue);
+}
+
+/* CART */
+.cart-button-container {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75px;
+  height: 75px;
+  z-index: 9;
+}
+
+.cart-button {
+  height: inherit;
+  width: inherit;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
+.cart-button-amount {
+  position: absolute;
+  top: -2.5px;
+  right: -2.5px;
+  background: var(--light-blue);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Tablet viewport */
+@media screen and (min-width: 720px) {
+  .filter > * {
+    width: fit-content;
+  }
+
+  .search-bar {
+    width: 350px;
+    flex-direction: row-reverse;
+  }
+}
