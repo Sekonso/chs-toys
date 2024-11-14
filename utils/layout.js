@@ -10,6 +10,7 @@ function toggleLayout(layout) {
 
 function renderOverlay(element) {
   const body = document.body;
+  const content = document.querySelector(".content")
 
   const existingOverlay = document.querySelector(".overlay");
   if (existingOverlay) existingOverlay.remove();
@@ -17,12 +18,15 @@ function renderOverlay(element) {
   const overlay = document.createElement("div");
   overlay.classList.add("overlay");
 
+  content.classList.add("blur")
   overlay.appendChild(element);
   body.appendChild(overlay);
 }
 
 function removeOverlay() {
   document.querySelector(".overlay").remove();
+  document.querySelector(".content").classList.remove("blur")
+  document.body.style.overflow = "auto";
 }
 
 export { toggleLayout, renderOverlay, removeOverlay };
