@@ -28,10 +28,17 @@ button:hover {
   color: white;
   cursor: pointer;
 }
+button:focus {
+  scale: 0.9;
+}
 
 /* Utilities */
 .hidden {
   display: none;
+}
+
+.blur {
+  filter: blur(4px);
 }
 
 /* HERO */
@@ -42,13 +49,48 @@ button:hover {
 }
 
 .hero-brand {
+  font-size: 2rem;
   margin-bottom: 2rem;
 }
 
 .hero-img {
   width: 100%;
+  max-height: 250px;
+  object-fit: cover;
 }
 
+/* Tokopedia promo */
+.tokopedia-promo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: #f7f7f7;
+}
+
+.tokopedia-promo img {
+  max-width: 45%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.tokopedia-promo h1 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+.tokopedia-promo a {
+  color: #05c005;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Overlay */
 .overlay {
   position: fixed;
   top: 0;
@@ -61,4 +103,10 @@ button:hover {
   justify-content: center;
   padding: 2rem;
   z-index: 99;
+}
+
+@media screen and (min-width: 720px) {
+  .tokopedia-promo h1 {
+    font-size: 2rem;
+  }
 }
