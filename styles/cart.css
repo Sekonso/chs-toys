@@ -21,6 +21,11 @@
   height: 35px;
 }
 
+.cart-exit:hover{
+  color: red;
+  outline: 1px solid red;
+}
+
 .cart-empty {
   margin-top: 5rem;
   margin-bottom: 5rem;
@@ -45,8 +50,8 @@
   gap: 1.5rem;
   width: 100%;
   padding: 2rem 0;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  border-top: 2px solid var(--light-blue);
+  border-bottom: 2px solid var(--light-blue);
 }
 
 .cart-item-img {
@@ -88,6 +93,10 @@
   color: white;
 }
 
+.cart-item-delete:hover {
+  border: 1px solid red;
+}
+
 .cart-submit,
 .buy-submit {
   background: var(--light-blue);
@@ -100,6 +109,7 @@
 .cart-submit:hover {
   background: white;
   color: var(--light-blue);
+  outline: 1px solid var(--light-blue);
 }
 
 .buy-form {
@@ -126,6 +136,11 @@
   height: 35px;
 }
 
+
+.buy-exit:hover {
+  color: red;
+}
+
 .buy-form label {
   margin-bottom: 0.5rem;
 }
@@ -136,8 +151,16 @@
   margin-bottom: 1rem;
 }
 
+.buy-form input:hover {
+  border: 2px solid var(--light-blue);
+}
+
 .buy-submit {
   margin-top: 1rem;
+}
+
+.buy-submit:hover {
+  outline: 1px solid var(--light-blue);
 }
 
 @media screen and (min-width: 720px) {
