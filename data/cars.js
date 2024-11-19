@@ -71,7 +71,7 @@ const Cars = [
   },
   {
     id: "8",
-    name: "NNO64 MAZDA RX7 (FD3S) LB-SUPER SILHOUETTE Hong Kong Toy Car Salon 2024 Special Edition",
+    name: "INNO64 MAZDA RX7 (FD3S) LB-SUPER SILHOUETTE Hong Kong Toy Car Salon 2024 Special Edition",
     model: "IN64047",
     brand: "Inno64",
     image: "./assets/cars/inno64/RX7 LBWK MIYOSHI.jpg",
@@ -81,7 +81,7 @@ const Cars = [
   },
   {
     id: "9",
-    name: "NNO64 Mazda RX3 Savanna Wide Body by Liberty Walk",
+    name: "INNO64 Mazda RX3 Savanna Wide Body by Liberty Walk",
     model: "IN64048",
     brand: "Inno64",
     image: "./assets/cars/inno64/mazda rx 3 LBWK.jpg",
@@ -91,7 +91,7 @@ const Cars = [
   },
   {
     id: "10",
-    name: "NNO64 Mitsubishi Pajero Evolution “Ralliart” Livery",
+    name: "INNO64 Mitsubishi Pajero Evolution “Ralliart” Livery",
     model: "IN64049",
     brand: "Inno64",
     image: "./assets/cars/inno64/pajero.jpg",
@@ -101,7 +101,7 @@ const Cars = [
   },
   {
     id: "11",
-    name: "NNO64 Toyota 2000GT White",
+    name: "INNO64 Toyota 2000GT White",
     model: "IN64050",
     brand: "Inno64",
     image: "./assets/cars/inno64/Toyota 2000GT.jpg",
@@ -111,7 +111,7 @@ const Cars = [
   },
   {
     id: "12",
-    name: "NNO64 Nissan Skyline GT-R (R34) Nismo R-Tune",
+    name: "INNO64 Nissan Skyline GT-R (R34) Nismo R-Tune",
     model: "IN64051",
     brand: "Inno64",
     image: "./assets/cars/inno64/R34 GOLD.jpg",
@@ -121,7 +121,7 @@ const Cars = [
   },
   {
     id: "13",
-    name: "NNO64 Nissan Silvia S14 Boss Pandem RB Grey",
+    name: "INNO64 Nissan Silvia S14 Boss Pandem RB Grey",
     model: "IN64052",
     brand: "Inno64",
     image: "./assets/cars/inno64/S14 RB.jpg",
