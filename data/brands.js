@@ -8,7 +8,7 @@ const Brands = [
     image: "./assets/brands/minigt.png",
   },
   {
-    name: "Inno",
+    name: "Inno64",
     image: "./assets/brands/inno.png",
   },
 ];

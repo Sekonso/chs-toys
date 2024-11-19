@@ -1,6 +1,6 @@
 import Cars from "../data/cars.js";
 import { toggleLayout, renderOverlay, removeOverlay } from "./layout.js";
-import { numberToRupiah } from "./helper.js";
+import { numberToRupiah, showNotification } from "./helper.js";
 import { updateButtonAppearance } from "./catalog.js";
 
 // Add car (by id) to cart session storage
@@ -10,32 +10,6 @@ function getCart() {
   if (!Array.isArray(cart) || cart.length === 0) return [];
 
   return cart;
-}
-
-//added and removed notifications
-function showNotification(message, type = "success") {
-  const existingNotification = document.querySelector(".notification");
-  if (existingNotification) {
-    existingNotification.remove();
-  }
-
-  const notification = document.createElement("div");
-  notification.classList.add("notification", type);
-  notification.textContent = message;
-
-  document.body.appendChild(notification);
-
-  setTimeout(() => {
-    notification.classList.add("show");
-  }, 0);
-
-  setTimeout(() => {
-    notification.classList.add("hide");
-    
-    setTimeout(() => {
-      notification.remove();
-    }, 500);
-  }, 1300);
 }
 
 // Function to add a car to the cart
@@ -83,6 +57,7 @@ function isItemInCart(carID) {
   return cart.includes(carID);
 }
 
+// Render cart form
 function renderCart() {
   const cart = getCart();
   const cartItemList = document.querySelector(".cart-item-list");
@@ -116,6 +91,7 @@ function renderCart() {
   toggleLayout("cart");
 }
 
+// Create items for cart form
 function createCartItem(item) {
   const cartItem = document.createElement("div");
   cartItem.classList.add("cart-item");
@@ -158,6 +134,7 @@ function createCartItem(item) {
   return cartItem;
 }
 
+// Add event to element in cart
 function addCartEvent() {
   document.querySelector(".cart-button").addEventListener("click", renderCart);
   document.querySelector(".cart-exit").addEventListener("click", () => toggleLayout("home"));
@@ -167,6 +144,7 @@ function addCartEvent() {
   });
 }
 
+// Render buy form
 function renderBuyForm() {
   const buyForm = document.createElement("form");
 

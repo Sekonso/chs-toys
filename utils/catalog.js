@@ -92,8 +92,8 @@ function setupCarItemButtons(carItem, car) {
 
   detailButton.setAttribute("aria-label", "View details");
   addButton.setAttribute("aria-label", "Add to cart");
-  if (isItemInCart(car.id)) updateButtonAppearance(addButton, true)
-  else updateButtonAppearance(addButton, false)
+  if (isItemInCart(car.id)) updateButtonAppearance(addButton, true);
+  else updateButtonAppearance(addButton, false);
 
   detailButton.addEventListener("click", () => renderCarDetail(car));
   addButton.addEventListener("click", () => toggleAddButtonState(car.id));
@@ -105,8 +105,8 @@ function setupCarDetailButtons(carDetail, carID) {
   const addButton = carDetail.querySelector(".car-detail-add");
 
   exitButton.setAttribute("aria-label", "Close car's detail");
-  if (isItemInCart(carID)) updateButtonAppearance(addButton, true)
-  else updateButtonAppearance(addButton, false)
+  if (isItemInCart(carID)) updateButtonAppearance(addButton, true);
+  else updateButtonAppearance(addButton, false);
 
   exitButton.addEventListener("click", removeOverlay);
   addButton.addEventListener("click", () => toggleAddButtonState(carID));
@@ -140,6 +140,5 @@ function updateButtonAppearance(button, isAdded) {
     button.innerHTML = `<i class="fas fa-plus"></i>`;
   }
 }
-
 
 export { renderCarList, updateButtonAppearance };

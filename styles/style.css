@@ -29,7 +29,9 @@ button:hover {
   color: white;
   cursor: pointer;
 }
-
+button:focus {
+  outline: 3px solid var(--light-blue);
+}
 button:active {
   transform: scale(0.85);
 }
