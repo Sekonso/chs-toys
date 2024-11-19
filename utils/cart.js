@@ -12,18 +12,46 @@ function getCart() {
   return cart;
 }
 
+//added and removed notifications
+function showNotification(message, type = "success") {
+  const existingNotification = document.querySelector(".notification");
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+
+  const notification = document.createElement("div");
+  notification.classList.add("notification", type);
+  notification.textContent = message;
+
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.classList.add("show");
+  }, 0);
+
+  setTimeout(() => {
+    notification.classList.add("hide");
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 500);
+  }, 1300);
+}
+
+// Function to add a car to the cart
 function addToCart(carID) {
   const cart = getCart();
 
   if (!cart.includes(carID)) {
     cart.push(carID);
+    showNotification("Barang telah ditambahkan ke keranjang", "added");
   }
 
   sessionStorage.setItem("cart", JSON.stringify(cart));
   updateCartButtonAmount();
 }
 
-// Remove car (by id) from cart session storage
+// Function to remove a car from the cart
 function removeFromCart(carID) {
   const cart = getCart();
 
@@ -34,6 +62,7 @@ function removeFromCart(carID) {
 
   sessionStorage.setItem("cart", JSON.stringify(cart.filter((item) => item !== carID)));
   updateCartButtonAmount();
+  showNotification("Barang telah dihapus dari keranjang", "removed");
 }
 
 // Re-render amount of item in cart button
@@ -151,9 +180,9 @@ function renderBuyForm() {
         <button type="button" class="buy-exit"><i class="fas fa-x"></i></button>
       </div>
       <label for="name">Nama</label>
-      <input type="text" id="customer-name" required/>
+      <input type="text" id="customer-name" placeholder="Masukan nama anda" required/>
       <label for="name">Alamat</label>
-      <input type="text" id="customer-address" required/>
+      <input type="text" id="customer-address" placeholder="Masukan alamat anda" required/>
       <button type="submit" class="buy-submit">Kirim</button>
     </form>
   `;

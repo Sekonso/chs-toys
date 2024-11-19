@@ -22,14 +22,16 @@ button {
   color: black;
   border: none;
   outline: none;
+  transition: transform 0.2s ease;
 }
 button:hover {
   background: black;
   color: white;
   cursor: pointer;
 }
-button:focus {
-  scale: 0.9;
+
+button:active {
+  transform: scale(0.85);
 }
 
 /* Utilities */
@@ -60,6 +62,10 @@ button:focus {
 }
 
 /* Tokopedia promo */
+.tokopedia-link {
+  text-decoration: none;
+}
+
 .tokopedia-promo {
   display: flex;
   flex-wrap: wrap;
@@ -68,6 +74,16 @@ button:focus {
   gap: 2rem;
   padding: 1rem;
   background-color: #f7f7f7;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.tokopedia-promo:hover {
+  outline: 3px solid lime;
+}
+
+.tokopedia-promo:active {
+  outline: 3px solid lime;
+  transform: scale(0.97);
 }
 
 .tokopedia-promo img {
@@ -84,7 +100,7 @@ button:focus {
   text-align: center;
 }
 
-.tokopedia-promo a {
+.tokopedia-promo .tokopedia-text {
   color: #05c005;
   font-weight: bold;
   text-decoration: none;
