@@ -258,7 +258,7 @@
 }
 
 .car-detail-desc {
-  max-height: 15rem;
+  max-height: 10rem;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -342,8 +342,6 @@ button.added:hover {
     width: 350px;
     flex-direction: row-reverse;
   }
-
-
 
   .car-detail-desc {
     max-height: 7rem;
