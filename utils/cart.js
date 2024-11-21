@@ -175,17 +175,16 @@ function renderBuyForm() {
 
     const items = Array.from(cartItemsInput).map((item) => {
       const itemQuantity = item.value;
-      return `${item.getAttribute("name")}: ${itemQuantity}`;
+      return `- ${item.getAttribute("name")}: ${itemQuantity}`;
     });
 
-    const waMessage = `CHS TOYS order
-  Nama: ${customerName.value}
-  Alamat: ${customerAddress.value}
-  Item:
+    const waMessage =
+      'CHS TOYS ORDER\n\n' +
+      `Nama: ${customerName.value}\n` +
+      `Alamat: ${customerAddress.value}\n\n` +
+      `Item (${items.length}):\n` +
+      items.join(`\n`);
 
-  ${items.join("\n")}`;
-
-    // Open WhatsApp with the encoded message
     const whatsappURL = `https://wa.me/81211737329?text=${encodeURIComponent(waMessage)}`;
     window.open(whatsappURL, "_blank");
   });
