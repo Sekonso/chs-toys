@@ -102,10 +102,6 @@
   text-align: center;
 }
 
-.car-item {
-  max-width: 450px;
-}
-
 .car-image {
   width: 100%;
   height: 200px;
@@ -298,6 +294,22 @@ button.added:hover {
 }
 
 
+/* PAGINATION */
+.page-list {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.page-button {
+  padding: 0.7rem 1rem;
+}
+.page-button.active {
+  background-color: var(--light-blue);
+  color: white;
+}
+
 /* CART */
 .cart-button-container {
   position: fixed;
@@ -345,5 +357,11 @@ button.added:hover {
 
   .car-detail-desc {
     max-height: 7rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .car-item {
+    max-width: 450px;
   }
 }

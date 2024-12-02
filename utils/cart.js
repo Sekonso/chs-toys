@@ -1,7 +1,6 @@
 import Cars from "../data/cars.js";
 import { toggleLayout, renderOverlay, removeOverlay } from "./layout.js";
 import { numberToRupiah, showNotification } from "./helper.js";
-import { updateButtonAppearance } from "./catalog.js";
 
 // Add car (by id) to cart session storage
 function getCart() {
