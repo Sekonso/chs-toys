@@ -1,6 +1,9 @@
 .cart-layout {
+  background-color: var(--dark-grey);
   max-width: 720px;
+  min-height: 100vh;
   margin: auto;
+  padding: 3rem;
 }
 
 .cart-header {
@@ -22,8 +25,8 @@
 }
 
 .cart-exit:hover{
-  color: red;
-  outline: 1px solid red;
+  color: var(--dark-red);
+  outline: 1px solid var(--dark-red);
 }
 
 .cart-empty {

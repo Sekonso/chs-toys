@@ -6,7 +6,6 @@ const numberToRupiah = (number) => {
   }).format(number);
 };
 
-// Add and remove notifications
 function showNotification(message, type = "success") {
   const existingNotification = document.querySelector(".notification");
   if (existingNotification) {
