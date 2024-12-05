@@ -1,5 +1,14 @@
 .catalog {
-  margin: 5rem 0;
+  background-color: var(--dark-grey);
+  padding: 3rem;
+  color: white;
+}
+
+.catalog-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* FILTER */
@@ -61,6 +70,7 @@
 }
 
 .search-bar {
+  color: rgba(0,0,0,0.5);
   background: var(--light-grey);
   display: flex;
   align-items: center;
@@ -69,12 +79,12 @@
   padding: 1rem;
 }
 
-.search-bar:hover{
+.search-bar:hover {
   outline: 2px solid var(--light-blue);
 }
 
 .search-input {
-  color: white;
+  color: black;
   opacity: 0.9;
   background: inherit;
   width: 100%;
@@ -83,10 +93,9 @@
 }
 
 .search-input::placeholder {
-  color: white;
+  color: rgba(0,0,0,0.5);
   font-size: 14px;
 }
-
 
 /* CAR LIST */
 
@@ -100,6 +109,20 @@
 .car-list-error {
   margin: 2rem 0;
   text-align: center;
+}
+
+.car-item {
+  padding: 1rem;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+  transition: scale 0.3s;
+}
+
+.car-item:hover {
+  cursor: pointer;
+  scale: 1.05;
+}
+.car-item:focus {
+  scale: 0.9;
 }
 
 .car-image {
@@ -138,35 +161,15 @@
   text-overflow: ellipsis;
 }
 
-.car-actions {
-  display: flex;
-  gap: 0.7rem;
-}
-
-.car-actions button {
+.car-action-add {
   background: white;
   padding: 0.5rem 1.7rem;
   border: none;
 }
-
-.car-actions button:hover {
+.car-action-add:hover {
   cursor: pointer;
   background: black;
-}
-
-.car-action-add:hover {
-  color: lime;
-  outline: 1px solid lime;
-}
-
-.car-action-add.added:hover {
-  color: var(--light-blue);
-  outline: 1px solid var(--light-blue);
-}
-
-.car-action-detail:hover {
-  color: var(--light-blue);
-  outline: 1px solid var(--light-blue)
+  color: white;
 }
 
 .notification {
@@ -185,30 +188,25 @@
   opacity: 0;
   transition: transform 0.5s ease, opacity 0.5s ease, top 0.5s ease;
 }
-
 .notification.added {
-  background-color: #068706;  /* Green */
-  outline: 2px solid lime;
+  background-color: #068706; 
 }
-
 .notification.removed {
-  background-color: #900a05;  /* Red */
-  outline: 2px solid red;
+  background-color: #900a05;
 }
-
 .notification.show {
-  top: 20px;   /* Position to show */
-  opacity: 1;   /* Fade in */
+  top: 20px;
+  opacity: 1;
 }
-
 .notification.hide {
-  top: -50px;   /* Move up */
-  opacity: 0;   /* Fade out */
+  top: -50px;
+  opacity: 0;
 }
 
 /* CAR DETAIL */
 .car-detail {
   background: var(--dark-grey);
+  color: white;
   display: flex;
   flex-direction: column;
   max-width: 680px;
@@ -216,14 +214,16 @@
 }
 
 .car-detail-exit {
+  background: var(--dark-red);
+  color: white;
   align-self: flex-end;
   margin-bottom: 1rem;
   padding: 0.5rem 1.5rem;
 }
-
 .car-detail-exit:hover {
-  color: red;
-  outline: 1px solid red;
+  background: black;
+  color: var(--dark-red);
+  outline: 1px solid var(--dark-red);
 }
 
 .car-detail-image {
@@ -280,8 +280,7 @@
 }
 
 .car-detail-add:hover {
-  color: lime;
-  outline: 1px solid lime;
+
 }
 
 button.added {
@@ -293,13 +292,14 @@ button.added:hover {
   color: var(--light-blue);
 }
 
-
 /* PAGINATION */
 .page-list {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-top: 3rem;
+  padding: 1rem;
+  border: 1px solid white;
 }
 
 .page-button {
@@ -308,40 +308,6 @@ button.added:hover {
 .page-button.active {
   background-color: var(--light-blue);
   color: white;
-}
-
-/* CART */
-.cart-button-container {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 75px;
-  height: 75px;
-  z-index: 9;
-}
-
-.cart-button {
-  height: inherit;
-  width: inherit;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  border: 3px solid var(--light-blue);
-}
-
-.cart-button-amount {
-  position: absolute;
-  top: -2.5px;
-  right: -2.5px;
-  background: var(--light-blue);
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
 }
 
 /* Tablet viewport */

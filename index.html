@@ -7,30 +7,50 @@
     <!-- Styles -->
     <link rel="shortcut icon" type="image/x-icon" href="./assets/logo.svg" />
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/homepage.css" />
     <link rel="stylesheet" href="./styles/catalog.css" />
     <link rel="stylesheet" href="./styles/cart.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Roboto:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/4d69af1ea6.js" crossorigin="anonymous" defer></script>
     <script type="module" src="./main.js" defer></script>
 
     <title>CHS TOYS</title>
   </head>
   <body>
+    <nav class="navbar">
+      <h1 class="navbar-brand">CHS TOYS</h1>
+      <div class="nav-list">
+        <a href="#catalog">Katalog</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Kontak</a>
+        <div class="cart-button-container">
+          <button class="cart-button"><i class="fas fa-cart-shopping"></i></button>
+          <div class="cart-button-amount">0</div>
+        </div>
+      </div>
+      <button class="navbar-toggle"><i class="fas fa-bars"></i></button>
+    </nav>
+
     <!-- Catalog layout -->
     <div class="content">
       <section class="home-layout">
         <header class="hero">
-          <h1 class="hero-brand">CHS TOYS</h1>
-          <img src="./assets/hero-img.jpg" alt="Gambar mobil" class="hero-img" />
+          <div class="hero-img-container">
+            <img src="./assets/hero-img.png" alt="Gambar mobil" class="hero-img" />
+          </div>
+          <div class="hero-caption">
+            <h2 class="hero-caption-header">CHS <span>TOYS</span></h2>
+            <p class="hero-caption-content">Menjual koleksi mainan mobil diecast dengan kualitas dan harga terbaik. <br><br> "We Wheels"</p>
+            <button aria-label="Explore catalog">Jelajah</button>
+          </div>
         </header>
 
         <main>
-          <div class="catalog">
+          <div class="catalog" id="catalog">
+            <h1 class="catalog-title">Katalog</h1>
+
             <!-- FILTER -->
             <div class="filter">
               <!-- Brand categories list -->
@@ -39,12 +59,7 @@
               <!-- Seach bar -->
               <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input
-                  type="search"
-                  class="search-input"
-                  placeholder="Cari produk disini..."
-                  aria-label="search"
-                />
+                <input type="search" class="search-input" placeholder="Cari produk disini..." aria-label="search" />
               </div>
             </div>
 
@@ -52,23 +67,69 @@
             <div class="car-list"></div>
 
             <div class="page-list"></div>
+          </div>
 
-            <!-- CART -->
-            <div class="cart-button-container">
-              <button class="cart-button"><i class="fas fa-cart-shopping"></i></button>
-              <div class="cart-button-amount">0</div>
+          <!-- FAQ -->
+          <div class="faq" id="faq">
+            <h2>FAQ</h2>
+            <div class="faq-list"></div>
+          </div>
+
+          <!-- CONTACT -->
+          <div class="contact" id="contact">
+            <div class="connect">
+              <h2>Hubungi Kami</h2>
+              <form class="connect-form" action="mailto:chstoys30@gmail.com" method="post" enctype="text/plain">
+                <input type="text" class="connect-input" id="connect-name" placeholder="Nama lengkap" name="name" required />
+                <textarea class="connect-input" id="connect-message" placeholder="Pesan" name="message" required></textarea>
+                <button type="submit" class="connect-submit">Kirim</button>
+              </form>
+            </div>
+            <div class="social">
+              <h2>Kontak Kami</h2>
+              <a class="social-link" href="https://wa.me/81211737329" target="_blank">
+                <div class="icon-container"><i class="fa-brands fa-whatsapp"></i></div>
+                62+ 812 1173 7329
+              </a>
+              <a class="social-link" href="mailto:chstoys30@gmail.com" target="_blank">
+                <div class="icon-container"><i class="fa-solid fa-at"></i></div>
+                chstoys30@gmail.com
+              </a>
+              <a class="social-link" href="#" target="_blank">
+                <div class="icon-container"><i class="fa-solid fa-bag-shopping"></i></div>
+                CHS Toys (Tokopedia)
+              </a>
             </div>
           </div>
 
+          <!-- TOKOPEDIA LINK -->
           <a class="tokopedia-link" href="https://www.tokopedia.com/chstoys" target="_blank">
             <div class="tokopedia-promo">
               <img src="./assets/tokopedia.png" alt="Gambar tokopedia" />
-              <h1>
+              <p>
                 Kunjungi juga toko kami di
                 <span class="tokopedia-text">Tokopedia</span>
-              </h1>
+              </p>
             </div>
           </a>
+
+          <!-- FOOTER -->
+          <div class="footer">
+            <h2>CHS <span>TOYS</span></h2>
+            <ul class="footer-contact">
+              <li class="header">Kontak</li>
+              <li><i class="fa-brands fa-whatsapp"></i> +62 81211737329</li>
+              <li><i class="fa-solid fa-at"></i> chstoys@gmail.com</li>
+            </ul>
+            <ul class="footer-devs">
+              <li class="header">Developer</li>
+              <li class="dev">Adriansyah</li>
+              <li class="dev">Badi Amnu Pramuditya</li>
+              <li class="dev">Dandy Daffa raihan</li>
+              <li class="dev">Fajri Mahda Aulia</li>
+              <li class="dev">Rafi Aria Sarosa</li>
+            </ul>
+          </div>
         </main>
       </section>
 

@@ -1,7 +1,8 @@
 :root {
   --dark-grey: #353434;
-  --light-grey: #999999;
+  --light-grey: #dddddd;
   --light-blue: #3590c5;
+  --dark-red: #ce0000;
 }
 
 * {
@@ -14,7 +15,11 @@
 body {
   background: var(--dark-grey);
   color: white;
-  padding: 2rem;
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font-family: "Bakbak One", sans-serif;
 }
 
 button {
@@ -45,69 +50,6 @@ button:active {
   filter: blur(4px);
 }
 
-/* HERO */
-
-.hero {
-  font-family: "Bakbak One", sans-serif;
-  text-align: center;
-}
-
-.hero-brand {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.hero-img {
-  width: 100%;
-  max-height: 250px;
-  object-fit: cover;
-}
-
-/* Tokopedia promo */
-.tokopedia-link {
-  text-decoration: none;
-}
-
-.tokopedia-promo {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-  background-color: #f7f7f7;
-  transition: transform 0.2s ease, border 0.2s ease;
-}
-
-.tokopedia-promo:hover {
-  outline: 3px solid lime;
-}
-
-.tokopedia-promo:active {
-  outline: 3px solid lime;
-  transform: scale(0.97);
-}
-
-.tokopedia-promo img {
-  max-width: 45%;
-  max-height: 150px;
-  object-fit: contain;
-}
-
-.tokopedia-promo h1 {
-  font-size: 1rem;
-  font-weight: normal;
-  color: #333;
-  margin: 0;
-  text-align: center;
-}
-
-.tokopedia-promo .tokopedia-text {
-  color: #05c005;
-  font-weight: bold;
-  text-decoration: none;
-}
-
 /* Overlay */
 .overlay {
   position: fixed;
@@ -121,6 +63,19 @@ button:active {
   justify-content: center;
   padding: 2rem;
   z-index: 99;
+}
+.overlay > * {
+  opacity: 0;
+  position: absolute;
+  top: 0; /* Start outside the viewport */
+  transform: translateY(-50%);
+  transition: top 0.5s, opacity 0.7s;
+}
+
+.overlay > *.show {
+  opacity: 1;
+  top: 50%; /* Move to center */
+  transform: translateY(-50%);
 }
 
 @media screen and (min-width: 720px) {

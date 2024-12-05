@@ -1,17 +1,33 @@
 import Cars from "../data/cars.js";
+import { updateAddButtonAppearance } from "./catalog.js";
 import { toggleLayout, renderOverlay, removeOverlay } from "./layout.js";
 import { numberToRupiah, showNotification } from "./helper.js";
 
-// Add car (by id) to cart session storage
-function getCart() {
-  let cart = JSON.parse(sessionStorage.getItem("cart"));
+function initCart() {
+  document.querySelector(".cart-button").addEventListener("click", renderCartForm);
+  document.querySelector(".cart-exit").addEventListener("click", () => toggleLayout("home"));
+  document.querySelector(".cart-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    renderBuyForm();
+  });
 
-  if (!Array.isArray(cart) || cart.length === 0) return [];
-
-  return cart;
+  updateCartButtonAmount();
 }
 
-// Function to add a car to the cart
+function getCart() {
+  const storedCart = JSON.parse(sessionStorage.getItem("cart"));
+  if (!Array.isArray(storedCart) || storedCart.length === 0) return [];
+  return storedCart;
+}
+
+function isItemInCart(carID) {
+  const cart = getCart();
+
+  if (cart.length === 0) return false;
+
+  return cart.includes(carID);
+}
+
 function addToCart(carID) {
   const cart = getCart();
 
@@ -24,77 +40,85 @@ function addToCart(carID) {
   updateCartButtonAmount();
 }
 
-// Function to remove a car from the cart
 function removeFromCart(carID) {
-  const cart = getCart();
+  let cart = getCart();
 
   if (cart.length === 0) {
-    console.error("Error removing cart");
+    console.error("Error menghapus item: Cart kosong");
     return;
   }
 
-  sessionStorage.setItem("cart", JSON.stringify(cart.filter((item) => item !== carID)));
+  cart = cart.filter((item) => item !== carID);
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   updateCartButtonAmount();
   showNotification("Barang telah dihapus dari keranjang", "removed");
 }
 
-// Re-render amount of item in cart button
 function updateCartButtonAmount() {
   const cartAmount = document.querySelector(".cart-button-amount");
   const cart = getCart();
 
-  if (cart.length === 0) cartAmount.innerHTML = "0";
-  else cartAmount.innerHTML = cart.length;
+  if (cart.length === 0) cartAmount.innerText = "0";
+  else cartAmount.innerText = cart.length;
 }
 
-// Check if the car id is in the cart session storage
-function isItemInCart(carID) {
-  const cart = getCart();
-
-  if (cart.length === 0) return false;
-
-  return cart.includes(carID);
-}
-
-// Render cart form
-function renderCart() {
-  const cart = getCart();
+function renderCartForm() {
   const cartItemList = document.querySelector(".cart-item-list");
   const cartSubmit = document.querySelector(".cart-submit");
-  const fragment = document.createDocumentFragment();
 
   cartItemList.innerHTML = "";
 
+  const cart = getCart();
+
   if (cart.length === 0) {
-    cartItemList.innerHTML = `
-      <h2 class="cart-empty">Belum ada item di keranjang</h2>
-    `;
-
-    cartSubmit.style.display = "none";
+    cartItemList.innerHTML = `<h2 class="cart-empty">Belum ada item di keranjang</h2>`;
+    cartSubmit.classList.add("hidden");
   } else {
-    cart.forEach((item) => {
-      const car = Cars.find((car) => car.id === item);
+    const fragment = document.createDocumentFragment();
 
+    cart.forEach((itemID) => {
+      const car = Cars.find((car) => car.id === itemID);
       if (car) {
         fragment.appendChild(createCartItem(car));
       }
     });
 
-    if (fragment.children.length > 0) {
-      cartItemList.appendChild(fragment);
-    }
-
-    cartSubmit.style.display = "block";
+    if (fragment.children.length > 0) cartItemList.appendChild(fragment);
+    cartSubmit.classList.remove("hidden");
   }
 
   toggleLayout("cart");
 }
 
-// Create items for cart form
+function renderBuyForm() {
+  const buyForm = document.createElement("form");
+
+  buyForm.classList.add("buy-form");
+  buyForm.innerHTML = `
+    <form class="buy-form">
+      <div class="buy-form-header">
+        <div></div>  
+        <h1>Konfirmasi</h1>
+        <button type="button" class="buy-exit"><i class="fas fa-x"></i></button>
+      </div>
+      <label for="name">Nama</label>
+      <input type="text" id="customer-name" placeholder="Masukan nama anda" required/>
+      <label for="name">Alamat</label>
+      <input type="text" id="customer-address" placeholder="Masukan alamat anda" required/>
+      <button type="submit" class="buy-submit">Kirim</button>
+    </form>
+  `;
+
+  buyForm.querySelector(".buy-exit").addEventListener("click", removeOverlay);
+  buyForm.addEventListener("submit", buyHandler);
+
+  renderOverlay(buyForm);
+}
+
 function createCartItem(item) {
   const cartItem = document.createElement("div");
-  cartItem.classList.add("cart-item");
 
+  cartItem.classList.add("cart-item");
   cartItem.innerHTML = `
     <img class="cart-item-img" src="${item.image}" alt="${item.name} image" />
     <div class="cart-item-info">
@@ -122,73 +146,42 @@ function createCartItem(item) {
     removeFromCart(item.id);
     cartItem.remove();
 
-    const addButtons = document.querySelectorAll(`[data-addID="${item.id}"]`);
+    const addButtons = document.querySelector(`[data-addID="${item.id}"]`);
+    updateAddButtonAppearance(addButtons, false)
 
-    addButtons.forEach((button) => {
-      updateButtonAppearance(button, false);
-    });
-    renderCart();
+    renderCartForm();
   });
 
   return cartItem;
 }
 
-// Add event to element in cart
-function addCartEvent() {
-  document.querySelector(".cart-button").addEventListener("click", renderCart);
-  document.querySelector(".cart-exit").addEventListener("click", () => toggleLayout("home"));
-  document.querySelector(".cart-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    renderBuyForm();
-  });
-}
+function buyHandler(e) {
+  e.preventDefault();
 
-// Render buy form
-function renderBuyForm() {
-  const buyForm = document.createElement("form");
+  const cartItemsInput = document.querySelectorAll(".cart-item-amount");
+  const customerName = document.querySelector("#customer-name");
+  const customerAddress = document.querySelector("#customer-address");
 
-  buyForm.classList.add("buy-form");
-
-  buyForm.innerHTML = `
-    <form class="buy-form">
-      <div class="buy-form-header">
-        <div></div>  
-        <h1>Konfirmasi</h1>
-        <button type="button" class="buy-exit"><i class="fas fa-x"></i></button>
-      </div>
-      <label for="name">Nama</label>
-      <input type="text" id="customer-name" placeholder="Masukan nama anda" required/>
-      <label for="name">Alamat</label>
-      <input type="text" id="customer-address" placeholder="Masukan alamat anda" required/>
-      <button type="submit" class="buy-submit">Kirim</button>
-    </form>
-  `;
-
-  buyForm.querySelector(".buy-exit").addEventListener("click", removeOverlay);
-  buyForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const cartItemsInput = document.querySelectorAll(".cart-item-amount");
-    const customerName = document.querySelector("#customer-name");
-    const customerAddress = document.querySelector("#customer-address");
-
-    const items = Array.from(cartItemsInput).map((item) => {
-      const itemQuantity = item.value;
-      return `- ${item.getAttribute("name")}: ${itemQuantity}`;
-    });
-
-    const waMessage =
-      'CHS TOYS ORDER\n\n' +
-      `Nama: ${customerName.value}\n` +
-      `Alamat: ${customerAddress.value}\n\n` +
-      `Item (${items.length}):\n` +
-      items.join(`\n`);
-
-    const whatsappURL = `https://wa.me/81211737329?text=${encodeURIComponent(waMessage)}`;
-    window.open(whatsappURL, "_blank");
+  const items = Array.from(cartItemsInput).map((item) => {
+    const itemQuantity = item.value;
+    return `- ${item.getAttribute("name")}: ${itemQuantity}`;
   });
 
-  renderOverlay(buyForm);
+  const waMessage =
+    "CHS TOYS ORDER\n\n" +
+    `Nama: ${customerName.value}\n` +
+    `Alamat: ${customerAddress.value}\n\n` +
+    `Item (${items.length}):\n` +
+    items.join(`\n`);
+
+  const whatsappURL = `https://wa.me/81211737329?text=${encodeURIComponent(waMessage)}`;
+  window.open(whatsappURL, "_blank");
 }
 
-export { addToCart, removeFromCart, isItemInCart, addCartEvent, updateCartButtonAmount };
+// Export necessary functions
+export {
+  initCart,
+  isItemInCart,
+  addToCart,
+  removeFromCart,
+};
