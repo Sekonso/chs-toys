@@ -9,6 +9,7 @@ function init() {
   setupNavbarToggle();
   setupFAQ();
   setupConnect();
+  setupLinkScroll();
   initCatalog(Brands, Cars);
   initCart();
 }
@@ -97,5 +98,22 @@ function setupConnect() {
 
     const whatsappURL = `https://wa.me/81211737329?text=${encodeURIComponent(waMessage)}`;
     window.open(whatsappURL, "_blank");
+  });
+}
+
+function setupLinkScroll() {
+  document.querySelectorAll(".link-scroll").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = e.target.getAttribute("href").slice(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        const yOffset = -80;
+        const y = targetElement.getBoundingClientRect().top + window.scrollY + yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    });
   });
 }
