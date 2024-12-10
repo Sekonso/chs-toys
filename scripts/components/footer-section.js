@@ -13,7 +13,7 @@ class FooterSection extends HTMLElement {
             <h2>CHS <span>TOYS</span></h2>
             <ul class="footer-contact">
               <li class="header">Kontak</li>
-              <li><i class="fa-brands fa-whatsapp"></i> +62 81211737329</li>
+              <li><i class="fa-brands fa-whatsapp"></i> +62 812 1173 7329</li>
               <li><i class="fa-solid fa-at"></i> chstoys30@gmail.com</li>
             </ul>
             <ul class="footer-devs">

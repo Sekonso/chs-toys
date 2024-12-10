@@ -22,7 +22,7 @@ class ContactSection extends HTMLElement {
               <h2>Kontak Kami</h2>
               <a class="social-link" href="https://wa.me/81211737329" target="_blank">
                 <div class="icon-container"><i class="fa-brands fa-whatsapp"></i></div>
-                62+ 812 1173 7329
+                +62 812 1173 7329
               </a>
               <a class="social-link" href="mailto:chstoys30@gmail.com" target="_blank">
                 <div class="icon-container"><i class="fa-solid fa-at"></i></div>
