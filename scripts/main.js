@@ -5,11 +5,7 @@ import Brands from "./data/brands.js";
 //Components
 import "./components/navbar-section.js";
 import "./components/cart-layout-section.js";
-import "./components/hero-section.js";
 import "./components/catalog-section.js";
-import "./components/faq-section.js";
-import "./components/contact-section.js";
-import "./components/tokopedia-section.js";
 import "./components/footer-section.js";
 
 import { initCatalog } from "./utils/catalog.js";
