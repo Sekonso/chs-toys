@@ -15,6 +15,7 @@ init();
 
 function init() {
   setupNavbarToggle();
+  setupTestimony();
   setupFAQ();
   setupConnect();
   setupLinkScroll();
@@ -30,6 +31,53 @@ function setupNavbarToggle() {
     if (navList.classList.contains("active")) navList.classList.remove("active");
     else navList.classList.add("active");
   });
+}
+
+function setupTestimony() {
+  const testimony = [
+    {
+      name: "Frengki",
+      comment: "Barang yg diterima sesuai gambar! Kualitas bahan bagus",
+      rating: 5,
+    },
+    {
+      name: "S***y",
+      comment: "Kualitas bahan bagus tanpa cacat packing baik barang yg diterima sesuai gambar!",
+      rating: 5,
+    },
+    {
+      name: "Muhammad",
+      comment: "Sesuaii mantap cihuyy",
+      rating: 5,
+    },
+  ];
+
+  const testimonyList = document.querySelector(".testimony-list");
+  const fragment = document.createDocumentFragment();
+
+  testimony.forEach((item) => {
+    const testimonyItem = document.createElement("div");
+    testimonyItem.classList.add("testimony-item");
+
+    let stars = "";
+    for (let i = 0; i < item.rating; i++) {
+      stars += '<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+
+    testimonyItem.innerHTML = `
+      <div class="name-area">
+        <p class="name">${item.name}</p>
+        <div class="stars">${stars}</div>
+      </div>
+        <div class="comment-area">
+        <p class="comment">${item.comment}</p>
+      </div>
+    `;
+
+    fragment.appendChild(testimonyItem);
+  });
+
+  testimonyList.appendChild(fragment);
 }
 
 function setupFAQ() {

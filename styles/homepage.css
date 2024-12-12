@@ -169,10 +169,72 @@
   outline: 2px solid var(--dark-red);
 }
 
+/* TESTIMONY */
+.testimony {
+  padding: 2rem;
+  color: black;
+  background-color: var(--light-grey);
+}
+
+.testimony h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.testimony-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.testimony-item {
+  margin-right: 6%;
+  margin-left: 6%;
+  color: white;
+  background: #0a0a0a;
+  border: 3px solid #313131;
+  padding: 20px;
+  
+}
+
+.name-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.stars {
+  color: yellow;
+  text-align: right;
+}
+
+.comment-area {
+  padding: 0.5rem;
+  margin-bottom: 15px;
+  background-color: #121212;
+  border: 3px solid #313131;
+}
+
+.comment {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
 /* FAQ */
 .faq {
-  background: var(--light-grey);
-  color: black;
+  background: var(--dark-grey);
+  color: white;
   padding: 2rem;
 }
 .faq h2 {
@@ -240,6 +302,8 @@
   justify-content: space-around;
   gap: 3rem;
   padding: 2rem 3rem;
+  color: black;
+  background-color: var(--light-grey);
 }
 
 .contact > * {
@@ -259,15 +323,15 @@
 
 .connect-input {
   background: none;
-  color: white;
+  color: black;
   border: none;
   width: 100%;
   padding: 1rem 0;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid black;
   min-width: 100%;
 }
 .connect-input::placeholder {
-  color: var(--light-grey);
+  color: var(--dark-grey);
 }
 .connect-input:focus {
   outline: none;
@@ -278,11 +342,15 @@ textarea.connect-input {
 }
 
 .connect-submit {
+  color: white;
+  background-color: black;
   padding: 1rem;
   margin-top: 2rem;
 }
 
 .connect-submit:hover{
+  color: black;
+  background-color: white;
   outline: 2px solid var(--light-blue);
 }
 
@@ -293,7 +361,7 @@ textarea.connect-input {
 }
 
 .social-link {
-  color: white;
+  color: black;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -318,6 +386,9 @@ textarea.connect-input {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  margin-top: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
   padding: 3rem 2rem;
   background-color: var(--light-grey);
   transition: transform 0.2s ease, border 0.2s ease;
@@ -340,7 +411,7 @@ textarea.connect-input {
 .tokopedia-promo p {
   font-size: 1.7rem;
   font-weight: normal;
-  color: #333;
+  color: black;
   margin: 0;
   text-align: center;
 }

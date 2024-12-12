@@ -120,7 +120,7 @@
 .car-item:hover {
   cursor: pointer;
   scale: 1.05;
-  background-color: rgb(28, 28, 28);
+  background-color: #1c1c1c;
 }
 .car-item:focus {
   scale: 0.9;
