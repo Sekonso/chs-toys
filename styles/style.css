@@ -18,7 +18,8 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: "Bakbak One", sans-serif;
 }
 
@@ -61,7 +62,6 @@ button:active {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
   z-index: 99;
 }
 .overlay > * {

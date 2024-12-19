@@ -1,16 +1,16 @@
 const Brands = [
   {
-    name: "Hotwheels",
-    image: "./assets/brands/hotwheels.png",
+    name: "hotwheels",
+    image: "https://chs-toys-api.vercel.app/brands/images/hotwheels"
   },
   {
-    name: "Mini GT",
-    image: "./assets/brands/minigt.png",
+    name: "minigt",
+    image: "https://chs-toys-api.vercel.app/brands/images/minigt"
   },
   {
-    name: "Inno64",
-    image: "./assets/brands/inno.png",
-  },
+    name: "inno64",
+    image: "https://chs-toys-api.vercel.app/brands/images/inno64"
+  }
 ];
 
 export default Brands;

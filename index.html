@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="./styles/cart.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://kit.fontawesome.com/4d69af1ea6.js" crossorigin="anonymous" defer></script>
     <script type="module" src="./scripts/main.js" defer></script>
 
@@ -24,13 +27,16 @@
     <!-- Catalog layout -->
     <div class="content">
       <section class="home-layout">
-        <header class="hero">
+        <header class="hero container">
           <div class="hero-img-container">
             <img src="./assets/hero-img.png" alt="Gambar mobil" class="hero-img" />
           </div>
           <div class="hero-caption">
             <h2 class="hero-caption-header">CHS <span>TOYS</span></h2>
-            <p class="hero-caption-content">Menjual koleksi mainan mobil diecast dengan kualitas dan harga terbaik. <br><br> "We Wheels"</p>
+            <p class="hero-caption-content">
+              Kami menjual koleksi mobil diecast berkualitas original dari berbagai merk ternama,
+              lengkapi koleksimu dengan harga yang terjangkau!
+            </p>
             <a href="#catalog" class="link-scroll">Jelajah</a>
           </div>
         </header>
@@ -39,26 +45,43 @@
           <!-- CATALOG -->
           <catalog-section></catalog-section>
 
-
           <!-- TESTIMONI -->
-          <div class="testimony" id="testimony">
+          <div class="testimony container" id="testimony">
             <h2>TESTIMONI</h2>
             <div class="testimony-list"></div>
           </div>
 
           <!-- FAQ -->
-          <div class="faq" id="faq">
+          <div class="faq container" id="faq">
             <h2>FAQ</h2>
             <div class="faq-list"></div>
           </div>
 
           <!-- CONTACT -->
-          <div class="contact" id="contact">
+          <div class="contact container" id="contact">
             <div class="connect">
               <h2>Hubungi Kami</h2>
-              <form class="connect-form" action="mailto:chstoys30@gmail.com" method="post" enctype="text/plain">
-                <input type="text" class="connect-input" id="connect-name" placeholder="Nama lengkap" name="name" required />
-                <textarea class="connect-input" id="connect-message" placeholder="Pesan" name="message" required></textarea>
+              <form
+                class="connect-form"
+                action="mailto:chstoys30@gmail.com"
+                method="post"
+                enctype="text/plain"
+              >
+                <input
+                  type="text"
+                  class="connect-input"
+                  id="connect-name"
+                  placeholder="Nama lengkap"
+                  name="name"
+                  required
+                />
+                <textarea
+                  class="connect-input"
+                  id="connect-message"
+                  placeholder="Pesan"
+                  name="message"
+                  required
+                ></textarea>
                 <button type="submit" class="connect-submit">Kirim</button>
               </form>
             </div>
@@ -97,7 +120,6 @@
 
       <!-- Cart layout -->
       <cart-layout-section></cart-layout-section>
-
     </div>
   </body>
 </html>
