@@ -1,9 +1,11 @@
-import Cars from "../data/cars.js";
 import { updateAddButtonAppearance } from "./catalog.js";
 import { toggleLayout, renderOverlay, removeOverlay } from "./layout.js";
 import { numberToRupiah, showNotification } from "./helper.js";
 
-function initCart() {
+let carList = [];
+
+function initCart(cars) {
+  carList = cars;
   document.querySelector(".cart-button").addEventListener("click", renderCartForm);
   document.querySelector(".cart-exit").addEventListener("click", () => toggleLayout("home"));
   document.querySelector(".cart-form").addEventListener("submit", (e) => {
@@ -41,17 +43,21 @@ function addToCart(carID) {
 }
 
 function removeFromCart(carID) {
-  let cart = getCart();
+  const answer = window.confirm("Apakah yakin untuk menghapus barang?");
 
-  if (cart.length === 0) {
-    console.error("Error menghapus item: Cart kosong");
-    return;
+  if (answer) {
+    let cart = getCart();
+
+    if (cart.length === 0) {
+      console.error("Error menghapus item: Cart kosong");
+      return;
+    }
+
+    cart = cart.filter((item) => item !== carID);
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+    updateCartButtonAmount();
+    showNotification("Barang telah dihapus dari keranjang", "removed");
   }
-
-  cart = cart.filter((item) => item !== carID);
-  sessionStorage.setItem("cart", JSON.stringify(cart));
-  updateCartButtonAmount();
-  showNotification("Barang telah dihapus dari keranjang", "removed");
 }
 
 function updateCartButtonAmount() {
@@ -77,7 +83,7 @@ function renderCartForm() {
     const fragment = document.createDocumentFragment();
 
     cart.forEach((itemID) => {
-      const car = Cars.find((car) => car.id === itemID);
+      const car = carList.find((car) => car.id === itemID);
       if (car) {
         fragment.appendChild(createCartItem(car));
       }
@@ -120,7 +126,9 @@ function createCartItem(item) {
 
   cartItem.classList.add("cart-item");
   cartItem.innerHTML = `
-    <img class="cart-item-img" src="${item.image}" alt="${item.name} image" />
+    <img class="cart-item-img" src="https://chs-toys-api.vercel.app/cars/images/${item.id}" alt="${
+    item.name
+  } image" />
     <div class="cart-item-info">
       <div class="cart-item-info-upper">
         <h3 class="cart-item-name">${item.name}</h3>
@@ -147,7 +155,7 @@ function createCartItem(item) {
     cartItem.remove();
 
     const addButtons = document.querySelector(`[data-addID="${item.id}"]`);
-    updateAddButtonAppearance(addButtons, false)
+    updateAddButtonAppearance(addButtons, false);
 
     renderCartForm();
   });
@@ -179,9 +187,4 @@ function buyHandler(e) {
 }
 
 // Export necessary functions
-export {
-  initCart,
-  isItemInCart,
-  addToCart,
-  removeFromCart,
-};
+export { initCart, isItemInCart, addToCart, removeFromCart };

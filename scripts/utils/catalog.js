@@ -40,7 +40,9 @@ function renderCarList() {
     const endIndex = startIndex + 6;
 
     const fragment = document.createDocumentFragment();
-    currentCarList.slice(startIndex, endIndex).forEach((car) => fragment.appendChild(createCarItem(car)));
+    currentCarList
+      .slice(startIndex, endIndex)
+      .forEach((car) => fragment.appendChild(createCarItem(car)));
     carListElement.appendChild(fragment);
   }
 }
@@ -51,26 +53,17 @@ function renderCarDetail(car) {
   carDetail.classList.add("car-detail");
   carDetail.innerHTML = `
     <button class="car-detail-exit"><i class="fas fa-x"></i></button>
-    <img src="${car.image}" alt="car photo of ${car.name}" class="car-detail-image" />
+    <img src="https://chs-toys-api.vercel.app/cars/images/${car.id}" alt="car photo of ${
+    car.name
+  }" class="car-detail-image" />
     <h3 class="car-detail-name">${car.name}</h3>
     <p class="car-detail-model">${car.model} - ${car.brand}</p>
-    <div class="car-detail-specs"></div>
     <p class="car-detail-desc">${car.desc || ""}</p>
     <div class="car-detail-lower">
       <p class="car-detail-price">${numberToRupiah(car.price)}</p>
       <button class="car-detail-add" data-addID="${car.id}"></button>
     </div>
   `;
-
-  const carDetailSpecs = carDetail.querySelector(".car-detail-specs");
-  const specsFragment = document.createDocumentFragment();
-  car.specs.forEach((spec) => {
-    const specElement = document.createElement("div");
-    specElement.classList.add("spec");
-    specElement.innerText = spec;
-    specsFragment.appendChild(specElement);
-  });
-  carDetailSpecs.appendChild(specsFragment);
 
   setupCarButtons(carDetail, car, "detail");
 
@@ -152,14 +145,18 @@ function createCarItem(car) {
   carItem.setAttribute("data-carID", car.id);
   carItem.classList.add("car-item");
   carItem.innerHTML = `
-      <img src="${car.image}" alt="Car image of ${car.name}" class="car-image" loading="lazy" />
+      <img src="https://chs-toys-api.vercel.app/cars/images/${car.id}" alt="Car image of ${
+    car.name
+  }" class="car-image" loading="lazy" />
       <div class="car-upper">
         <h3 class="car-name">${car.name}</h3>
         <p class="car-model">${car.model} - ${car.brand}</p>
       </div>
       <div class="car-lower">
         <p class="car-price">${numberToRupiah(car.price)}</p>
-          <button class="car-action-add" data-addID="${car.id}"><i class="plus fas fa-plus"></i></button>
+          <button class="car-action-add" data-addID="${
+            car.id
+          }"><i class="plus fas fa-plus"></i></button>
       </div>
   `;
 
@@ -169,11 +166,13 @@ function createCarItem(car) {
 }
 
 function setupCarButtons(container, car, type) {
-  const addButton = container.querySelector(type === "item" ? ".car-action-add" : ".car-detail-add");
+  const addButton = container.querySelector(
+    type === "item" ? ".car-action-add" : ".car-detail-add"
+  );
 
   addButton.addEventListener("click", (e) => {
     e.stopPropagation();
-    toggleAddButtonState(car.id)
+    toggleAddButtonState(car.id);
   });
   if (isItemInCart(car.id)) updateAddButtonAppearance(addButton, true);
   else updateAddButtonAppearance(addButton, false);
@@ -230,7 +229,9 @@ function filterCarList() {
     checkedBrandsValue.push(checked.value);
   });
 
-  currentCarList = carList.filter((car) => checkedBrandsValue.includes(car.brand) && car.name.toLowerCase().includes(searchValue));
+  currentCarList = carList.filter(
+    (car) => checkedBrandsValue.includes(car.brand) && car.name.toLowerCase().includes(searchValue)
+  );
 
   currentPage = 1;
   renderPageList();

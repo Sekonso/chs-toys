@@ -1,7 +1,4 @@
-
-import Cars from "./data/cars.js";
 import Brands from "./data/brands.js";
-
 //Components
 import "./components/navbar-section.js";
 import "./components/cart-layout-section.js";
@@ -13,14 +10,17 @@ import { initCart } from "./utils/cart.js";
 
 init();
 
-function init() {
+async function init() {
+  const cars = await fetchCarData();
   setupNavbarToggle();
   setupTestimony();
   setupFAQ();
   setupConnect();
   setupLinkScroll();
-  initCatalog(Brands, Cars);
-  initCart();
+  if (cars) {
+    initCatalog(Brands, cars);
+    initCart(cars);
+  }
 }
 
 function setupNavbarToggle() {
@@ -34,13 +34,13 @@ function setupNavbarToggle() {
 }
 
 function createWave(color, viewBox, shape) {
-  let path = '';
+  let path = "";
   let viewBoxValue = viewBox || "0 0 1440 1200";
 
-  if (shape === 'shape1') {
+  if (shape === "shape1") {
     path = `M 0,1440 L 0,750 C 760,400 980,1000 1440,750 L 1440,1440 L 0,1440 Z`;
     viewBoxValue = "0 0 1440 1230";
-  } else if (shape === 'shape2') {
+  } else if (shape === "shape2") {
     path = `M 0,1440 L 0,750 C 760,400 1000,1000 2040,750 L 1440,1440 L 0,1440 Z`;
     viewBoxValue = "0 0 1440 1310";
   } else {
@@ -67,17 +67,17 @@ function setupTestimony() {
     {
       name: "S***y",
       comment: "Kualitas bahan bagus tanpa cacat packing baik barang yg diterima sesuai gambar!",
-      color: "#8a5fbb", 
+      color: "#8a5fbb",
       shape: "shape2",
       image: "https://www.svgrepo.com/show/17344/avatar.svg"
     },
     {
       name: "Muhammad",
       comment: "Sesuaii mantap cihuyy",
-      color: "#57a3f1", 
+      color: "#57a3f1",
       shape: "shape3",
       image: "https://www.svgrepo.com/show/16907/avatar.svg"
-    },
+    }
   ];
 
   const testimonyList = document.querySelector(".testimony-list");
@@ -125,11 +125,13 @@ function setupFAQ() {
     },
     {
       question: "Metode pembayaran dan jasa pengirima apa saja yang tersedia?",
-      answer: "Kami menerima pembayaran melalui BCA dan QRIS. Untuk jasa pengiriman, kami hanya menggunakan ekspedisi JNT"
+      answer:
+        "Kami menerima pembayaran melalui BCA dan QRIS. Untuk jasa pengiriman, kami hanya menggunakan ekspedisi JNT"
     },
     {
       question: "Apakah ada pengembalian barang jika tidak sesuai",
-      answer: "kami menyediakan pengembalian barang sesuai syarat dan ketentuan yang berlaku, hubungi customer service untuk detail lebih lanjut"
+      answer:
+        "kami menyediakan pengembalian barang sesuai syarat dan ketentuan yang berlaku, hubungi customer service untuk detail lebih lanjut"
     },
     {
       question: "Bagaimana cara menghubungi customer service?",
@@ -199,4 +201,20 @@ function setupLinkScroll() {
       }
     });
   });
+}
+
+async function fetchCarData() {
+  const carList = document.querySelector(".car-list");
+
+  try {
+    carList.innerHTML = "<h1>Loading</h1>";
+
+    const response = await fetch("https://chs-toys-api.vercel.app/cars");
+    const responseJSON = await response.json();
+
+    return responseJSON.data;
+  } catch (error) {
+    console.error(error);
+    carList.innerHTML = "<h1>Gagal mengambil data</h1>";
+  }
 }

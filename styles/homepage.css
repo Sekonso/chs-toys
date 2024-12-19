@@ -9,7 +9,7 @@
   justify-content: space-between;
   width: 100vw;
   height: 85px;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   z-index: 50;
 }
@@ -116,9 +116,7 @@
   flex-direction: column; /* Stack items vertically by default */
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  padding-top: 100px;
+  padding: 100px 3rem 3rem 3rem;
   padding-inline: 3rem;
 }
 
@@ -160,6 +158,7 @@
   background: var(--dark-red);
   color: white;
   font-size: 1rem;
+  margin-top: 5rem;
   padding: 0.7rem 2rem;
   text-decoration: none;
 }
