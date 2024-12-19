@@ -33,22 +33,50 @@ function setupNavbarToggle() {
   });
 }
 
+function createWave(color, viewBox, shape) {
+  let path = '';
+  let viewBoxValue = viewBox || "0 0 1440 1200";
+
+  if (shape === 'shape1') {
+    path = `M 0,1440 L 0,750 C 760,400 980,1000 1440,750 L 1440,1440 L 0,1440 Z`;
+    viewBoxValue = "0 0 1440 1230";
+  } else if (shape === 'shape2') {
+    path = `M 0,1440 L 0,750 C 760,400 1000,1000 2040,750 L 1440,1440 L 0,1440 Z`;
+    viewBoxValue = "0 0 1440 1310";
+  } else {
+    path = `M 0,750 L 0,750 C 760,820 780,300 1840,900 L 1440,1440 L 0,1440 Z`;
+    viewBoxValue = "0 0 1440 1230";
+  }
+
+  return `
+    <svg class="wave" width="100%" height="100%" viewBox="${viewBoxValue}" xmlns="http://www.w3.org/2000/svg">
+      <path d="${path}" stroke="none" stroke-width="0" fill="${color}" fill-opacity="1"></path>
+    </svg>
+  `;
+}
+
 function setupTestimony() {
   const testimony = [
     {
       name: "Frengki",
       comment: "Barang yg diterima sesuai gambar! Kualitas bahan bagus",
-      rating: 5,
+      color: "#22c199",
+      shape: "shape1",
+      image: "https://www.svgrepo.com/show/75578/avatar.svg"
     },
     {
       name: "S***y",
       comment: "Kualitas bahan bagus tanpa cacat packing baik barang yg diterima sesuai gambar!",
-      rating: 5,
+      color: "#8a5fbb", 
+      shape: "shape2",
+      image: "https://www.svgrepo.com/show/17344/avatar.svg"
     },
     {
       name: "Muhammad",
       comment: "Sesuaii mantap cihuyy",
-      rating: 5,
+      color: "#57a3f1", 
+      shape: "shape3",
+      image: "https://www.svgrepo.com/show/16907/avatar.svg"
     },
   ];
 
@@ -59,21 +87,20 @@ function setupTestimony() {
     const testimonyItem = document.createElement("div");
     testimonyItem.classList.add("testimony-item");
 
-    let stars = "";
-    for (let i = 0; i < item.rating; i++) {
-      stars += '<i class="fa fa-star" aria-hidden="true"></i>';
-    }
-
     testimonyItem.innerHTML = `
-      <div class="name-area">
-        <p class="name">${item.name}</p>
-        <div class="stars">${stars}</div>
-      </div>
-        <div class="comment-area">
+      <div class="comment-area">
         <p class="comment">${item.comment}</p>
       </div>
+      <div class="profile-area">
+        <div class="profile">
+          <img src="${item.image}" alt="${item.name}'s Profile Picture">
+        </div>
+        <div class="name-area">
+          <p class="name">${item.name}</p>
+        </div>
+      </div>
+      ${createWave(item.color, 690, item.shape)}
     `;
-
     fragment.appendChild(testimonyItem);
   });
 
