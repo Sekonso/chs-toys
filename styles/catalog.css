@@ -256,6 +256,9 @@
 }
 
 .car-detail-desc {
+  background: #1c1c1c;
+  margin-top: 1rem;
+  padding: 1rem;
   max-height: 10rem;
   overflow: scroll;
   overflow-x: hidden;
